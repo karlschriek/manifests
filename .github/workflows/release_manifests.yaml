@@ -1,5 +1,8 @@
 name: release_manifests
-on: [push]
+on:
+  push:
+    branches:
+      - v1.2-branch-at
 jobs:
   create-release:
     runs-on: ubuntu-latest
