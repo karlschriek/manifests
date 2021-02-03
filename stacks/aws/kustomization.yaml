@@ -33,6 +33,9 @@ resources:
   - ../../metadata/v3-external-db
   # Mirrored configs and secrets
   - ./mirrored-configs
+  # Create rds dbs
+  - ./mirrored-configs
+
 
 
 generatorOptions:

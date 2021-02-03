@@ -1,0 +1,249 @@
+apiVersion: apps/v1
+kind: Job
+metadata:
+  name: create-katib-db
+  labels:
+    component: create-katib-db
+spec:
+  template:
+    metadata:
+      labels:
+        component: create-katib-db
+    spec:
+      containers:
+        - name: create-katib-db
+          env:
+
+          - name: HOST
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: host
+
+          - name: PORT
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: post
+
+          - name: USERNAME
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: username
+
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: password
+          
+          - name: DATABASE
+            valueFrom:
+              secretKeyRef:
+                name:  rds-dbs-config-map
+                key: katib
+
+          image: kschriek/mysql-db-creator
+
+          command: ["sh", "create_db.sh"]
+---
+apiVersion: apps/v1
+kind: Job
+metadata:
+  name: create-mlflow-db
+  labels:
+    component: create-mlflow-db
+spec:
+  template:
+    metadata:
+      labels:
+        component: create-mlflow-db
+    spec:
+      containers:
+        - name: create-mlflow-db
+          env:
+
+          - name: HOST
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: host
+
+          - name: PORT
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: post
+
+          - name: USERNAME
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: username
+
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: password
+          
+          - name: DATABASE
+            valueFrom:
+              secretKeyRef:
+                name:  rds-dbs-config-map
+                key: mlflow
+
+          image: kschriek/mysql-db-creator
+
+          command: ["sh", "create_db.sh"]
+---
+apiVersion: apps/v1
+kind: Job
+metadata:
+  name: create-pipelines-db
+  labels:
+    component: create-pipelines-db
+spec:
+  template:
+    metadata:
+      labels:
+        component: create-pipelines-db
+    spec:
+      containers:
+        - name: create-pipelines-db
+          env:
+
+          - name: HOST
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: host
+
+          - name: PORT
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: post
+
+          - name: USERNAME
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: username
+
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: password
+          
+          - name: DATABASE
+            valueFrom:
+              secretKeyRef:
+                name:  rds-dbs-config-map
+                key: pipelines
+
+          image: kschriek/mysql-db-creator
+
+          command: ["sh", "create_db.sh"]
+---
+apiVersion: apps/v1
+kind: Job
+metadata:
+  name: create-metadata-db
+  labels:
+    component: create-metadata-db
+spec:
+  template:
+    metadata:
+      labels:
+        component: create-metadata-db
+    spec:
+      containers:
+        - name: create-metadata-db
+          env:
+
+          - name: HOST
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: host
+
+          - name: PORT
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: post
+
+          - name: USERNAME
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: username
+
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: password
+          
+          - name: DATABASE
+            valueFrom:
+              secretKeyRef:
+                name:  rds-dbs-config-map
+                key: metadata
+
+          image: kschriek/mysql-db-creator
+
+          command: ["sh", "create_db.sh"]
+---
+apiVersion: apps/v1
+kind: Job
+metadata:
+  name: create-cache-db
+  labels:
+    component: create-cache-db
+spec:
+  template:
+    metadata:
+      labels:
+        component: create-cache-db
+    spec:
+      containers:
+        - name: create-cache-db
+          env:
+
+          - name: HOST
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: host
+
+          - name: PORT
+            valueFrom:
+              secretKeyRef:
+                name: rds-creds-secret
+                key: post
+
+          - name: USERNAME
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: username
+
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name:  rds-creds-secret
+                key: password
+          
+          - name: DATABASE
+            valueFrom:
+              secretKeyRef:
+                name:  rds-dbs-config-map
+                key: cache
+
+          image: kschriek/mysql-db-creator
+
+          command: ["sh", "create_db.sh"]
