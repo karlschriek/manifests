@@ -14,6 +14,10 @@ data:
         {
           "link": "/katib/",
           "text": "Katib"
+        },
+        {
+          "link": "/mlflow/",
+          "text": "MLFlow"
         }
       ],
       "externalLinks": [],
@@ -37,6 +41,11 @@ data:
           "text": "View Katib Experiments",
           "desc": "Katib",
           "link": "/katib/"
+        },
+        {
+          "text": "View MLFLow Experiments",
+          "desc": "MLFlow",
+          "link": "/mlflow/"
         }
       ],
       "documentationItems": [
