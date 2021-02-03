@@ -1,3 +1,4 @@
+# TODO
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,31 +27,36 @@ spec:
             configMapKeyRef:
               name: pipeline-install-config
               key: bucketName
-        - name: DBCONFIG_USER
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: username
-        - name: DBCONFIG_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: password
+
+
+        
         - name: DBCONFIG_DBNAME
           valueFrom:
             configMapKeyRef:
-              name: pipeline-install-config
-              key: pipelineDb
+              name: rds-dbs-config-map
+              key: PIPELINES
+
+        - name: DBCONFIG_USER
+          valueFrom:
+            secretKeyRef:
+              name: rds-creds-secret
+              key: USERNAME
+        - name: DBCONFIG_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rds-creds-secret
+              key: PASSWORD
         - name: DBCONFIG_HOST
           valueFrom:
             configMapKeyRef:
-              name: pipeline-install-config
-              key: dbHost
+              name: rds-creds-secret
+              key: HOST
         - name: DBCONFIG_PORT
           valueFrom:
             configMapKeyRef:
-              name: pipeline-install-config
-              key: dbPort
+              name: rds-creds-secret
+              key: PORT
+
         - name: OBJECTSTORECONFIG_ACCESSKEY
           valueFrom:
             secretKeyRef:
