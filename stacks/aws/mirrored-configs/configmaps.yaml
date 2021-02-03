@@ -35,3 +35,29 @@ data: {
   # mlflow: xxxx
   # pipelines: xxxx  
 }
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: s3-bucket-config-map
+  namespace: kubeflow
+  annotations: {
+    "reflector.v1.k8s.emberstack.com/reflects": "default/s3-bucket-config-map" #this configmap will be reflected from "default/rds-dbs-config-map"  which is NOT defined in these manifests and not created by kfctl.
+  }
+data: {
+  # mlflow: xxxx
+  # pipelines: xxxx
+}
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: s3-bucket-config-map
+  namespace: mlflow
+  annotations: {
+    "reflector.v1.k8s.emberstack.com/reflects": "default/s3-bucket-config-map" #this configmap will be reflected from "default/rds-dbs-config-map"  which is NOT defined in these manifests and not created by kfctl.
+  }
+data: {
+  # mlflow: xxxx
+  # pipelines: xxxx
+}

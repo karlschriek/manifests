@@ -1,0 +1,12 @@
+namePrefix: metadata-
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  kustomize.component: metadata
+generatorOptions:
+  disableNameSuffixHash: true
+resources:
+- mlflow.yaml
+- create-db-job.yaml
+namespace: mlflow
+
