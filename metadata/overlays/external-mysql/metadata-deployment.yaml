@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,15 +19,15 @@ spec:
         - name: container
           envFrom:
           - configMapRef:
-              name: metadata-db-parameters
+              name: rds-dbs-config-map
           - secretRef:
-              name: metadata-db-secrets
+              name: rds-creds-secret
           - configMapRef:
               name: grpc-configmap
           args: ["--grpc_port=$(METADATA_GRPC_SERVICE_PORT)",
-                 "--mysql_config_host=$(MYSQL_HOST)",
-                 "--mysql_config_database=$(MYSQL_DATABASE)",
-                 "--mysql_config_port=$(MYSQL_PORT)",
-                 "--mysql_config_user=$(MYSQL_USERNAME)",
-                 "--mysql_config_password=$(MYSQL_PASSWORD)"
+                 "--mysql_config_host=$(HOST)",
+                 "--mysql_config_database=$(DATABASE)",
+                 "--mysql_config_port=$(PORT)",
+                 "--mysql_config_user=$(USERNAME)",
+                 "--mysql_config_password=$(PASSWORD)"
           ]

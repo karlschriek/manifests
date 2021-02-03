@@ -1,3 +1,4 @@
+# TODO
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,41 +21,23 @@ spec:
         env:
           - name: DBCONFIG_DRIVER
             value: mysql
-          - name: DBCONFIG_DB_NAME
+          - name: DATABASE
             valueFrom:
-              configMapKeyRef:
-                name: pipeline-install-config
-                key: cacheDb
-          - name: DBCONFIG_HOST_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: pipeline-install-config
-                key: dbHost
-          - name: DBCONFIG_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: pipeline-install-config
-                key: dbPort
-          - name: DBCONFIG_USER
-            valueFrom:
-              secretKeyRef:
-                name: mysql-secret
-                key: username
-          - name: DBCONFIG_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysql-secret
-                key: password
+              configMapRef:
+                name: rds-dbs-config-map
+                key: CACHE  
+          - secretRef:
+              name: rds-creds-secret
           - name: NAMESPACE_TO_WATCH
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
         args: ["--db_driver=$(DBCONFIG_DRIVER)",
-               "--db_host=$(DBCONFIG_HOST_NAME)",
-               "--db_port=$(DBCONFIG_PORT)",
-               "--db_name=$(DBCONFIG_DB_NAME)",
-               "--db_user=$(DBCONFIG_USER)",
-               "--db_password=$(DBCONFIG_PASSWORD)",
+               "--db_host=$(HOST)",
+               "--db_port=$(PORT)",
+               "--db_name=$(DATABASE)",
+               "--db_user=$(USERNAME)",
+               "--db_password=$(PASSWORD)",
                "--namespace_to_watch=$(NAMESPACE_TO_WATCH)",
               ]
         imagePullPolicy: Always

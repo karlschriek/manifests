@@ -1,3 +1,4 @@
+# TODO
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,38 +19,20 @@ spec:
       - name: container
         image: gcr.io/tfx-oss-public/ml_metadata_store_server:0.22.1
         env:
-        - name: DBCONFIG_USER
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: username
-        - name: DBCONFIG_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: password
-        - name: MYSQL_DATABASE
-          valueFrom:
-            configMapKeyRef:
-              name: pipeline-install-config
-              key: mlmdDb
-        - name: MYSQL_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: pipeline-install-config
-              key: dbHost
-        - name: MYSQL_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: pipeline-install-config
-              key: dbPort
+          - name: DATABASE
+            valueFrom:
+              configMapRef:
+                name: rds-dbs-config-map
+                key: METADATA  
+          - secretRef:
+              name: rds-creds-secret
         command: ["/bin/metadata_store_server"]
         args: ["--grpc_port=8080",
-               "--mysql_config_database=$(MYSQL_DATABASE)",
-               "--mysql_config_host=$(MYSQL_HOST)",
-               "--mysql_config_port=$(MYSQL_PORT)",
-               "--mysql_config_user=$(DBCONFIG_USER)",
-               "--mysql_config_password=$(DBCONFIG_PASSWORD)",
+               "--mysql_config_database=$(DATABASE)",
+               "--mysql_config_host=$(HOST)",
+               "--mysql_config_port=$(PORT)",
+               "--mysql_config_user=$(USERNAME)",
+               "--mysql_config_password=$(PASSWORD)",
                "--enable_database_upgrade=true"
                ]
         ports:
