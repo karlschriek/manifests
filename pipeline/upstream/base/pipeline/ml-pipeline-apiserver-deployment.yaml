@@ -40,22 +40,22 @@ spec:
           valueFrom:
             secretKeyRef:
               name: rds-creds-secret
-              key: USERNAME
+              key: username
         - name: DBCONFIG_PASSWORD
           valueFrom:
             secretKeyRef:
               name: rds-creds-secret
-              key: PASSWORD
+              key: password
         - name: DBCONFIG_HOST
           valueFrom:
             configMapKeyRef:
               name: rds-creds-secret
-              key: HOST
+              key: host
         - name: DBCONFIG_PORT
           valueFrom:
             configMapKeyRef:
               name: rds-creds-secret
-              key: PORT
+              key: port
 
         - name: OBJECTSTORECONFIG_ACCESSKEY
           valueFrom:

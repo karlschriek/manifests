@@ -25,9 +25,9 @@ spec:
           - configMapRef:
               name: grpc-configmap
           args: ["--grpc_port=$(METADATA_GRPC_SERVICE_PORT)",
-                 "--mysql_config_host=$(HOST)",
+                 "--mysql_config_host=$(host)",
                  "--mysql_config_database=$(DATABASE)",
-                 "--mysql_config_port=$(PORT)",
-                 "--mysql_config_user=$(USERNAME)",
-                 "--mysql_config_password=$(PASSWORD)"
+                 "--mysql_config_port=$(port)",
+                 "--mysql_config_user=$(username)",
+                 "--mysql_config_password=$(password)"
           ]

@@ -29,10 +29,10 @@ spec:
         command: ["/bin/metadata_store_server"]
         args: ["--grpc_port=8080",
                "--mysql_config_database=$(DATABASE)",
-               "--mysql_config_host=$(HOST)",
-               "--mysql_config_port=$(PORT)",
-               "--mysql_config_user=$(USERNAME)",
-               "--mysql_config_password=$(PASSWORD)",
+               "--mysql_config_host=$(host)",
+               "--mysql_config_port=$(port)",
+               "--mysql_config_user=$(username)",
+               "--mysql_config_password=$(password)",
                "--enable_database_upgrade=true"
                ]
         ports:

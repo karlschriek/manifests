@@ -33,11 +33,11 @@ spec:
               fieldRef:
                 fieldPath: metadata.namespace
         args: ["--db_driver=$(DBCONFIG_DRIVER)",
-               "--db_host=$(HOST)",
-               "--db_port=$(PORT)",
+               "--db_host=$(host)",
+               "--db_port=$(port)",
                "--db_name=$(DATABASE)",
-               "--db_user=$(USERNAME)",
-               "--db_password=$(PASSWORD)",
+               "--db_user=$(username)",
+               "--db_password=$(password)",
                "--namespace_to_watch=$(NAMESPACE_TO_WATCH)",
               ]
         imagePullPolicy: Always
