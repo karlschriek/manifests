@@ -19,20 +19,20 @@ spec:
       - name: container
         image: gcr.io/tfx-oss-public/ml_metadata_store_server:0.22.1
         env:
-          # - name: DATABASE
-          #   valueFrom:
-          #     configMapRef:
-          #       name: rds-dbs-config-map
-          #       key: METADATA  
-          # - secretRef:
-          #     name: rds-creds-secret
+          - name: DATABASE
+            valueFrom:
+              configMapRef:
+                name: rds-dbs-config-map
+                key: METADATA  
+          - secretRef:
+              name: rds-creds-secret
         command: ["/bin/metadata_store_server"]
         args: ["--grpc_port=8080",
                "--mysql_config_database=$(DATABASE)",
-               "--mysql_config_host=$(host)",
-               "--mysql_config_port=$(port)",
-               "--mysql_config_user=$(username)",
-               "--mysql_config_password=$(password)",
+               "--mysql_config_host=$(HOST)",
+               "--mysql_config_port=$(PORT)",
+               "--mysql_config_user=$(USERNAME)",
+               "--mysql_config_password=$(PASSWORD)",
                "--enable_database_upgrade=true"
                ]
         ports:

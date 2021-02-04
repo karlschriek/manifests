@@ -30,32 +30,33 @@ spec:
 
 
         
-        # - name: DBCONFIG_DBNAME
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       name: rds-dbs-config-map
-        #       key: PIPELINES
 
-        # - name: DBCONFIG_USER
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: rds-creds-secret
-        #       key: username
-        # - name: DBCONFIG_PASSWORD
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: rds-creds-secret
-        #       key: password
-        # - name: DBCONFIG_HOST
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       name: rds-creds-secret
-        #       key: host
-        # - name: DBCONFIG_PORT
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       name: rds-creds-secret
-        #       key: port
+        - name: DBCONFIG_DBNAME
+          valueFrom:
+            configMapKeyRef:
+              name: rds-dbs-config-map
+              key: PIPELINES
+
+        - name: DBCONFIG_USER
+          valueFrom:
+            secretKeyRef:
+              name: rds-creds-secret
+              key: USERNAME
+        - name: DBCONFIG_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rds-creds-secret
+              key: PASSWORD
+        - name: DBCONFIG_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: rds-creds-secret
+              key: HOST
+        - name: DBCONFIG_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: rds-creds-secret
+              key: PORT
 
         - name: OBJECTSTORECONFIG_ACCESSKEY
           valueFrom:

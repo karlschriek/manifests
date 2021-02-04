@@ -1,11 +1,5 @@
 name: release_manifests
-on:
-  push:
-    branches:
-      - v1.2-branch-at  
-  pull_request:
-    branches:
-      - v1.2-branch-at
+on: [push]
 jobs:
   create-release:
     runs-on: ubuntu-latest
@@ -15,7 +9,7 @@ jobs:
         uses: dev-drprasad/delete-tag-and-release@v0.1.2
         with:
           delete_release: true # default: false
-          tag_name: v1.2.0-at # tag name to delete. This will delete release before recreating it.
+          tag_name: v0.1.0 # tag name to delete
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -25,8 +19,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-
-          tag_name: v1.2.0-at
+          tag_name: v0.1.0
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false

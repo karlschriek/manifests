@@ -24,21 +24,21 @@ spec:
           args:
             - --host=0.0.0.0
             - --port=5000
-            - --backend-store-uri=mysql://\$(username):\$(password)@\$(host):\$(port)/\$(DATABASE)
+            - --backend-store-uri=mysql://\$(USERNAME):\$(PASSWORD)@\$(HOST):\$(PORT)/\$(DATABASE)
             - --default-artifact-root=s3://\$(S3_BUCKET)/modeling/experiments
           envFrom:
-          # - name: DATABASE
-          #   valueFrom:
-          #     configMapRef:
-          #       name: rds-dbs-config-map
-          #       key: MLFLOW                
-          # - name: S3_BUCKET
-          #   valueFrom:
-          #     configMapRef:
-          #       name: s3-bucket-config-map
-          #       key: MLFLOW
-          # - secretRef:
-          #     name: rds-creds-secret
+          - name: DATABASE
+            valueFrom:
+              configMapRef:
+                name: rds-dbs-config-map
+                key: MLFLOW                
+          - name: S3_BUCKET
+            valueFrom:
+              configMapRef:
+                name: s3-bucket-config-map
+                key: MLFLOW
+          - secretRef:
+              name: rds-creds-secret
           ports:
             - name: http
               containerPort: 5000

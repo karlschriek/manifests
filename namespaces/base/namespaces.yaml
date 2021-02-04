@@ -19,7 +19,6 @@ metadata:
   name: mlflow
   labels:
     control-plane: kubeflow
----
 apiVersion: v1
 kind: Namespace
 metadata:
