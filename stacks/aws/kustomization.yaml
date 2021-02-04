@@ -32,9 +32,9 @@ resources:
   # Metadata
   - ../../metadata/v3-external-db
   # Mirrored configs and secrets
-  - ./mirrored-configs
+  - ../../aws/mirrored-configs
   # Create rds dbs
-  - ./mirrored-configs
+  - ../../aws/rds-database
 
 
 
