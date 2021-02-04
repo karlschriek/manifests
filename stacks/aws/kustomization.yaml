@@ -33,7 +33,6 @@ resources:
   - ../../default-install/base
   # Metadata
   - ../../metadata/v3-external-db
-
   # Create rds dbs
   - ../../aws/rds-databases
 
