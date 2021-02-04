@@ -19,7 +19,7 @@ resources:
   - ../../mpi-job/mpi-operator/overlays/application
   - ../../katib/installs/katib-standalone
   # Pipeline
-  - ../../pipeline/minio/installs/aws
+  - ../../pipeline/minio/installs/generic
   - ../../pipeline/installs/multi-user
   - ../../argo/base_v3
   # Serving components
