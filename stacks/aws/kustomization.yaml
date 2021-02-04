@@ -3,6 +3,9 @@ kind: Kustomization
 namespace: kubeflow
 resources:
   # List the Kubeflow applications that should be included
+    # Mirrored configs and secrets
+  - ../../aws/mirrored-configs/kubeflow
+  - ../../aws/mirrored-configs/mlflow
   # control plane
   - ../../admission-webhook/webhook/v3
   - ./application/common/centraldashboard
@@ -19,7 +22,7 @@ resources:
   - ../../mpi-job/mpi-operator/overlays/application
   - ../../katib/installs/katib-standalone
   # Pipeline
-  - ../../pipeline/minio/installs/aws
+  - ../../pipeline/minio/installs/generic
   - ../../pipeline/installs/multi-user
   - ../../argo/base_v3
   # Serving components
@@ -31,10 +34,9 @@ resources:
   - ../../default-install/base
   # Metadata
   - ../../metadata/v3-external-db
-  # Mirrored configs and secrets
-  - ./mirrored-configs
   # Create rds dbs
-  - ./mirrored-configs
+  - ../../aws/rds-databases
+
 
 
 

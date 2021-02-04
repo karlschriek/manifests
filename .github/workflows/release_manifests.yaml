@@ -15,7 +15,7 @@ jobs:
         uses: dev-drprasad/delete-tag-and-release@v0.1.2
         with:
           delete_release: true # default: false
-          tag_name: v0.1.0 # tag name to delete
+          tag_name: v1.2.0-at # tag name to delete. This will delete release before recreating it.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -25,7 +25,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.1.0
+
+          tag_name: v1.2.0-at
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
