@@ -4,7 +4,8 @@ namespace: kubeflow
 resources:
   # List the Kubeflow applications that should be included
     # Mirrored configs and secrets
-  - ../../aws/mirrored-configs
+  - ../../aws/mirrored-configs/kubeflow
+  - ../../aws/mirrored-configs/mlflow
   # control plane
   - ../../admission-webhook/webhook/v3
   - ./application/common/centraldashboard
