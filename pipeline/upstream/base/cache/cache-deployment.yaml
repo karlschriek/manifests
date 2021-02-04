@@ -21,13 +21,13 @@ spec:
         env:
           - name: DBCONFIG_DRIVER
             value: mysql
-          - name: DATABASE
-            valueFrom:
-              configMapRef:
-                name: rds-dbs-config-map
-                key: CACHE  
-          - secretRef:
-              name: rds-creds-secret
+          # - name: DATABASE
+          #   valueFrom:
+          #     configMapRef:
+          #       name: rds-dbs-config-map
+          #       key: CACHE  
+          # - secretRef:
+          #     name: rds-creds-secret
           - name: NAMESPACE_TO_WATCH
             valueFrom:
               fieldRef:
