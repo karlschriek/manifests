@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: kfserving
 resources:
-- ../upstream/kfserving.yaml
+- upstream/kfserving.yaml
 commonLabels:
   app: kfserving
   kustomize.component: kfserving
